@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Task } from '../types/task'
-import TaskList from '@/sections/dashboard/components/taskList/TaskListContainer'
-import TaskForm from '../components/TaskForm'
-import TaskDetail from '../components/TaskDetail'
+import TaskList from '@/sections/dashboard/components/TaskListContainer'
+import TaskForm from '../components/TaskFormContainer'
+import TaskDetail from '../components/TaskDetailContainer'
 
 const DashboradContainer = () => {
     const [tasks, setTasks] = useState<Task[]>([])
@@ -19,6 +19,13 @@ const DashboradContainer = () => {
         setSelectedTask(null)
         setIsEditing(false)
     }
+
+    const handleUpdate = (updatedTask: Omit<Task, 'id' | 'completed'>) => {
+        if (selectedTask) {
+            const taskToUpdate = { ...selectedTask, ...updatedTask };
+            updateTask(taskToUpdate);
+        }
+    };
 
     const deleteTask = (id: number) => {
         setTasks(tasks.filter(task => task.id !== id))
@@ -52,7 +59,7 @@ const DashboradContainer = () => {
                                 </div>
                                 <div className="mt-4">
                                     <TaskForm
-                                        onSubmit={isEditing ? updateTask : addTask}
+                                        onSubmit={isEditing ? handleUpdate : addTask}
                                         initialTask={isEditing ? selectedTask : null}
                                     />
                                     {selectedTask && (

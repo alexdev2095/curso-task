@@ -16,3 +16,14 @@ export type TaskListProps = {
     onTaskToggle: (id: number) => void
     onTaskDelete: (id: number) => void
 }
+
+export type TaskDetailProps = {
+    task: Task;
+    onEdit: () => void;
+    onDelete: () => void;
+};
+
+export type TaskFormProps = {
+    onSubmit: (task: Omit<Task, 'id' | 'completed'>) => void
+    initialTask: Task | null
+}

@@ -1,7 +1,5 @@
-'use client'
-
 import { useState, useEffect } from 'react'
-import { Task } from '../types/task'
+import { TaskFormProps } from '../types/task'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -9,12 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
-type TaskFormProps = {
-    onSubmit: (task: Omit<Task, 'id' | 'completed'>) => void
-    initialTask: Task | null
-}
-
-export default function TaskForm({ onSubmit, initialTask }: TaskFormProps) {
+const TaskFormContainer = ({ onSubmit, initialTask }: TaskFormProps) => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [dueDate, setDueDate] = useState('')
@@ -98,3 +91,5 @@ export default function TaskForm({ onSubmit, initialTask }: TaskFormProps) {
         </Card>
     )
 }
+
+export default TaskFormContainer

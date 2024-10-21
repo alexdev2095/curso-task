@@ -1,15 +1,9 @@
-import { Task } from '../types/task'
+import { TaskDetailProps } from '../types/task'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
-type TaskDetailProps = {
-    task: Task
-    onEdit: () => void
-    onDelete: () => void
-}
-
-export default function TaskDetail({ task, onEdit, onDelete }: TaskDetailProps) {
+const TaskDetailContainer = ({ task, onEdit, onDelete }: TaskDetailProps) => {
     return (
         <Card className="mt-4 bg-gray-800 border-gray-700">
             <CardHeader>
@@ -36,3 +30,5 @@ export default function TaskDetail({ task, onEdit, onDelete }: TaskDetailProps) 
         </Card>
     )
 }
+
+export default TaskDetailContainer

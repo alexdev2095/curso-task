@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { Task } from '@/sections/dashboard/types/task'
-// import { TaskListProps } from '@/sections/dashboard/types/task'
+import { TaskListProps } from '@/sections/dashboard/types/task'
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -14,13 +13,6 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-
-type TaskListProps = {
-    tasks: Task[]
-    onTaskClick: (task: Task) => void
-    onTaskToggle: (id: number) => void
-    onTaskDelete: (id: number) => void
-}
 
 const TaskListContainer = ({ tasks, onTaskClick, onTaskToggle, onTaskDelete }: TaskListProps) => {
     const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all')
